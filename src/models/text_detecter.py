@@ -1,9 +1,10 @@
 from abc import abstractmethod, ABC
+from google.cloud import vision
 
 
 class TextDetecter(ABC):
-    def __init__(self):
-        pass
+    def __init__(self, client: vision.ImageAnnotatorClient):
+        self.client = client
 
     @abstractmethod
     def read_image(self, image_path: str) -> any:
@@ -16,12 +17,11 @@ class TextDetecter(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def detect_text(self, image: any) -> str:
+    def detect_text(self, image_path: str) -> str:
         """OCRのテキスト検知メソッド
         args:
             image any: 各APIのOCRメソッドに適した画像情報
         return:
-            識別された文字情報
-        return
+            str: 識別された文字情報
         """
         raise NotImplementedError()

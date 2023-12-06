@@ -1,2 +1,4 @@
 pytest==7.4.3
 pydantic==2.5.2
+google-cloud-vision==3.4.5
+pdf2image==1.16.3
