@@ -1,4 +1,4 @@
-from models.text_detecter import TextDetecter
+from backend.models.text_detecter import TextDetecter
 
 
 class MyTestClass(TextDetecter):
