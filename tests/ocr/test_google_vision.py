@@ -1,4 +1,4 @@
-from ocr.google_vision import GoogleVisionDetecter, AnnotateImageResponse
+from backend.ocr.google_vision import GoogleVisionDetecter, AnnotateImageResponse
 from google.cloud import vision
 
 

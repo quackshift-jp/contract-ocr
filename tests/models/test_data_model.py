@@ -1,4 +1,4 @@
-from models.data_model import Employee, Contract, EmployeeEvent
+from backend.models.data_model import Employee, Contract, EmployeeEvent
 from datetime import datetime
 
 
