@@ -2,7 +2,7 @@ from google.cloud import vision
 import io
 from google.cloud.vision_v1 import AnnotateImageResponse
 import json
-from models.text_detecter import TextDetecter
+from backend.models.text_detecter import TextDetecter
 
 
 class GoogleVisionDetecter(TextDetecter):
