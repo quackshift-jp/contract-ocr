@@ -18,5 +18,5 @@ def test_google_vision_detecter(monkeypatch):
 
     detector = GoogleVisionDetecter(MockClient())
 
-    actual = detector.detect_text("テストパス")
-    assert actual == "テスト"
+    actual = detector.detect_text(["テストパス", "テストパス"])
+    assert actual == "テスト\nテスト"
