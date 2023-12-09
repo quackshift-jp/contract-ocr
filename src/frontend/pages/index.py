@@ -8,7 +8,7 @@ sys.path.append(str(pathlib.Path().absolute()))
 from backend.modules.pdf_to_image import (
     convert_streamlit_pdf_to_images,
 )
-from main import detect
+from backend.main import detect
 
 
 def index_page() -> None:
