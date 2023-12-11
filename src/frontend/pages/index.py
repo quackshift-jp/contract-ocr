@@ -8,36 +8,40 @@ sys.path.append(str(pathlib.Path().absolute()))
 from backend.modules.pdf_to_image import (
     convert_streamlit_pdf_to_images,
 )
-from backend.main import detect, extract_items
+from frontend.component.organisms.file_processor import process_file
+from frontend.component.utils.navigation import next_file, previous_file
 
 
 def index_page() -> None:
     st.title("OCR自動化プロダクト")
-
     st.sidebar.markdown("### 読み込む契約書をアップロード（複数ファイル可）")
     upload_files = st.sidebar.file_uploader(
         "Upload a PDF or jpeg file", type=["pdf", "jpg"], accept_multiple_files=True
     )
-    for file in upload_files:
+
+    # アップされたファイル情報を一枚ずつ表示するため、indexを状態として保持する
+    if "current_index" not in st.session_state:
+        st.session_state["current_index"] = 0
+
+    if upload_files:
+        st.session_state["upload_files"] = upload_files
+        file = upload_files[st.session_state["current_index"]]
         if file.type == "application/pdf":
             file = convert_streamlit_pdf_to_images(file)
-
         st.image(file)
 
-        response = detect(file)
-        # TODO:フロントの責務を分離する
-        contract_items = extract_items(response)
+        # TODO:このjson情報を、データベースに保存する必要がある
+        edited_json = process_file(file)
+        print(edited_json)
 
-        # JSONオブジェクトの各キーと値を表示し、編集可能にする
-        edited_json = {}
-        for key, value in contract_items["content"].items():
-            new_value = st.sidebar.text_input(f"{key}: ", value)
-            edited_json[key] = new_value
+        col1, col2 = st.sidebar.columns(2)
+        with col1:
+            if st.button("前へ"):
+                previous_file()
 
-        # 編集された内容を表示するボタン
-        if st.sidebar.button("更新"):
-            st.sidebar.write("更新されたJSON:")
-            st.sidebar.json(edited_json)
+        with col2:
+            if st.button("次へ"):
+                next_file()
 
 
 index_page()
