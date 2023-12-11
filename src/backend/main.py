@@ -29,4 +29,4 @@ def detect(jpeg_file: Union[UploadedFile, Image.Image]) -> str:
 
 def extract_items(text: str) -> dict[str, dict[str, any]]:
     openai_item_extractor = OpenaiItemExtractor(OPENAI_CLIENT)
-    return openai_item_extractor.inference(text)
+    return openai_item_extractor.extract_items(text)
