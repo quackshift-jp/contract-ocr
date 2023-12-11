@@ -23,7 +23,7 @@ OPENAI_CLIENT = OpenAI()
 
 def detect(jpeg_file: Union[UploadedFile, Image.Image]) -> str:
     google_vision_detecter = google_vision.GoogleVisionDetecter(GOOGLECLIENT)
-    response = google_vision_detecter.detect_text(jpeg_file)
+    response = google_vision_detecter.inference(jpeg_file)
     return response
 
 

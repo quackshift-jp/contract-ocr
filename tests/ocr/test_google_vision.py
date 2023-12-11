@@ -1,5 +1,6 @@
 from backend.ocr.google_vision import GoogleVisionDetecter, AnnotateImageResponse
 from google.cloud import vision
+from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 
 def test_google_vision_detecter(monkeypatch):
@@ -18,5 +19,7 @@ def test_google_vision_detecter(monkeypatch):
 
     detector = GoogleVisionDetecter(MockClient())
 
-    actual = detector.detect_text(["テストパス", "テストパス"])
-    assert actual == "テスト\nテスト"
+    actual_1 = detector.inference(["テストjpeg画像1", "テストjpeg画像2"])
+    actual_2 = detector.inference(["テストjpeg画像"])
+    assert actual_1 == "テスト\nテスト"
+    assert actual_2 == "テスト"
