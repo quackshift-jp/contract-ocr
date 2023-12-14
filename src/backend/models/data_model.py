@@ -10,10 +10,10 @@ class Employee(BaseModel):
 
 class Contract(BaseModel):
     contract_id: int
-    image_link: str
+    # image_link: str
     contractor: str
-    created_at: datetime
-    updated_at: datetime
+    # created_at: datetime
+    # updated_at: datetime
 
 
 class EmployeeEvent(BaseModel):
