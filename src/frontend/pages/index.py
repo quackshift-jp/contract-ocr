@@ -1,5 +1,6 @@
 import pathlib
 import sys
+import requests
 
 import streamlit as st
 
@@ -10,6 +11,13 @@ from backend.modules.pdf_to_image import (
 )
 from frontend.component.organisms.file_processor import process_file
 from frontend.component.utils.navigation import next_file, previous_file
+
+
+def request():
+    response = requests.get("http://127.0.0.1:8000/get/contracts/")
+    if response.status_code == 200:
+        json_data = response.json()
+        return json_data
 
 
 def index_page() -> None:
