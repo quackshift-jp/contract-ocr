@@ -1,4 +1,4 @@
-from backend.models.data_model import Employee, Contract, EmployeeEvent
+from backend.schemas.schemas import Employee, Contract, EmployeeEvent
 from datetime import datetime
 
 
@@ -21,7 +21,6 @@ def test_employee():
 def test_contract():
     contract_data = {
         "contract_id": 11111,
-        "image_link": "サンプルリンク",
         "contractor": "サンプル株式会社",
         "created_at": "2099-01-01 01:00:00",
         "updated_at": "2099-01-01 01:00:00",
@@ -30,7 +29,6 @@ def test_contract():
     actual = Contract(**contract_data).model_dump()
     expected = {
         "contract_id": 11111,
-        "image_link": "サンプルリンク",
         "contractor": "サンプル株式会社",
         "created_at": datetime(2099, 1, 1, 1, 0),
         "updated_at": datetime(2099, 1, 1, 1, 0),
