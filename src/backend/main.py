@@ -14,6 +14,7 @@ from streamlit.runtime.uploaded_file_manager import UploadedFile
 from backend.modules.extract_items import OpenaiItemExtractor
 
 from backend.router.get import router as get_router
+from backend.router.insert import router as insert_router
 
 load_dotenv(verbose=True)
 
@@ -25,6 +26,7 @@ os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 OPENAI_CLIENT = OpenAI()
 app = FastAPI()
 app.include_router(get_router)
+app.include_router(insert_router)
 
 
 def detect(jpeg_file: Union[UploadedFile, Image.Image]) -> str:
