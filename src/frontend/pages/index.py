@@ -13,13 +13,6 @@ from frontend.component.organisms.file_processor import process_file
 from frontend.component.utils.navigation import next_file, previous_file
 
 
-def request():
-    response = requests.get("http://127.0.0.1:8000/get/contracts/")
-    if response.status_code == 200:
-        json_data = response.json()
-        return json_data
-
-
 def index_page() -> None:
     st.title("OCR自動化プロダクト")
     st.sidebar.markdown("### 読み込む契約書をアップロード（複数ファイル可）")
