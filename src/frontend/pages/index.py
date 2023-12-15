@@ -33,7 +33,6 @@ def index_page() -> None:
 
         # TODO:このjson情報を、データベースに保存する必要がある
         edited_json = process_file(file)
-        print(edited_json)
 
         col1, col2 = st.sidebar.columns(2)
         with col1:

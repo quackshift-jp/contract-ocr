@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from sqlalchemy.orm import Session
 
 from backend.crud import get
 from backend.models.data_model import Contract
