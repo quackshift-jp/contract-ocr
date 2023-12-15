@@ -1,24 +1,12 @@
-from pydantic import BaseModel
-from datetime import datetime
+from sqlalchemy import DateTime, Integer, Column, String, text
+from sqlalchemy.sql import func
 
 
-class Employee(BaseModel):
-    employee_id: int
-    name: str
-    created_at: datetime
-
-
-class Contract(BaseModel):
-    contract_id: int
-    # image_link: str
-    contractor: str
-    # created_at: datetime
-    # updated_at: datetime
-
-
-class EmployeeEvent(BaseModel):
-    contract_id: int
-    employee_id: int
-    created_at: datetime
-    updated_at: datetime
-    event_type: str
+class Contract:
+    __tablename__ = "contract"
+    contract_id = Column("contract_id", Integer, primary_key=True, autoincrement=True)
+    contractor = Column("contractor", String(150), nullable=False)
+    created_at = Column("created_at", DateTime, nullable=False)
+    updated_at = Column(
+        "updated_at", DateTime, nullable=False, server_default=func.now()
+    )
