@@ -1,6 +1,5 @@
 import pathlib
 import sys
-import requests
 
 import streamlit as st
 
@@ -31,8 +30,8 @@ def index_page() -> None:
             file = convert_streamlit_pdf_to_images(file)
         st.image(file)
 
-        # TODO:このjson情報を、データベースに保存する必要がある
-        edited_json = process_file(file)
+        # OCR推論から項目抽出、データベースへの書き込みまでの責務を持つ
+        process_file(file)
 
         col1, col2 = st.sidebar.columns(2)
         with col1:
