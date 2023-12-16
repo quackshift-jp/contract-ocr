@@ -5,6 +5,7 @@ import streamlit as st
 from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from backend.main import detect, extract_items
+from frontend.component.api.request import request_insert_contract_endpoint
 
 
 def process_file(jpeg_file: Union[UploadedFile, Image.Image]) -> dict[str, any]:
@@ -20,5 +21,6 @@ def process_file(jpeg_file: Union[UploadedFile, Image.Image]) -> dict[str, any]:
     if st.sidebar.button("保存"):
         st.sidebar.write("以下の内容で保存されました🎉")
         st.sidebar.json(edited_json)
-
-        return edited_json
+        request_insert_contract_endpoint(
+            "http://127.0.0.1:8000/insert/contracts", edited_json["物件名"]
+        )
