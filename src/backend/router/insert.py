@@ -10,9 +10,8 @@ router = APIRouter()
 
 @router.post("/insert/contracts", response_model=Contract)
 async def insert_contracts_endpoint(
-    contract_id: int,
     contractor: str,
     db: Session = Depends(db.get_db_session),
 ) -> list[Contract]:
-    result = insert.insert_contract(contract_id, contractor, db=db)
+    result = insert.insert_contract(contractor, db=db)
     return result

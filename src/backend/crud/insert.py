@@ -4,12 +4,12 @@ from datetime import datetime
 from backend.schemas.schemas import Contract
 
 
-def insert_contract(contract_id: int, contractor: str, db: Session) -> list[Contract]:
+def insert_contract(contractor: str, db: Session) -> list[Contract]:
     current_date = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
     sql = text(
         f"""
-    insert into contract (contract_id, contractor, created_at, updated_at) values \
-    ('{contract_id}', '{contractor}', '{current_date}', '{current_date}')
+    insert into contract (contractor, created_at, updated_at) values \
+    ('{contractor}', '{current_date}', '{current_date}')
     """
     )
     db.execute(sql)
