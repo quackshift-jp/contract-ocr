@@ -17,4 +17,4 @@ async def insert_contracts_endpoint(
         insert.insert_contract(contractor, db=db)
         return {"message": f"insert success: contractor={contractor}"}
     except Exception as e:
-        HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=400, detail=str(e))
