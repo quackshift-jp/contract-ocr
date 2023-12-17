@@ -8,6 +8,7 @@ from google.cloud import vision
 from google.oauth2 import service_account
 from openai import OpenAI
 from fastapi import FastAPI
+import uvicorn
 
 from backend.ocr import google_vision
 from streamlit.runtime.uploaded_file_manager import UploadedFile
@@ -40,3 +41,7 @@ def detect(jpeg_file: Union[UploadedFile, Image.Image]) -> str:
 def extract_items(text: str) -> dict[str, dict[str, any]]:
     openai_item_extractor = OpenaiItemExtractor(OPENAI_CLIENT)
     return openai_item_extractor.extract_items(text)
+
+
+if __name__ == "__main__":
+    uvicorn.run("backend.main:app", port=8000, host="0.0.0.0", reload=True)

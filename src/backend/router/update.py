@@ -12,7 +12,7 @@ router = APIRouter()
 @router.put("/update/contracts/{contracts_id}", response_model=dict[str, str])
 async def update_contract_endpoint(
     contract_id: int, contractor: str, db: Session = Depends(db.get_db_session)
-):
+) -> dict[str, str]:
     try:
         update.update_contract(contract_id, contractor, db=db)
         return {"message": f"contract_id {contract_id} is updated successfully."}
