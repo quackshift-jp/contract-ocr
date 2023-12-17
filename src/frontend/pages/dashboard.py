@@ -19,7 +19,11 @@ def render():
 
 def edit_row(contract_df: pd.DataFrame) -> dict[str, str]:
     contract_id = st.selectbox(label="編集するidを選択", options=contract_df["contract_id"])
-    contractor = st.text_input(label="編集内容", value="")
+    default_contractor = contract_df[contract_df["contract_id"] == contract_id][
+        "contractor"
+    ].iloc[0]
+    contractor = st.text_input(label="編集内容", value=f"{default_contractor}")
+    is_exist_text(contractor)
 
     if st.button("編集保存", key="save_button"):
         response = update_contract_endpoint(
@@ -37,3 +41,8 @@ def edit_row(contract_df: pd.DataFrame) -> dict[str, str]:
         )
         st.balloons()
         return response
+
+
+def is_exist_text(text):
+    if text == "":
+        st.error("Please input any text.")

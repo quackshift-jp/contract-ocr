@@ -12,6 +12,7 @@ def process_file(jpeg_file: Union[UploadedFile, Image.Image]) -> dict[str, any]:
     response = detect(jpeg_file)
     contract_items = extract_items(response)
 
+    st.sidebar.markdown("### 項目確認")
     # JSONオブジェクトの各キーと値を表示し、編集可能にする
     edited_json = {}
     for key, value in contract_items["content"].items():
