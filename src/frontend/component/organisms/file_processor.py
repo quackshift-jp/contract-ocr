@@ -18,7 +18,7 @@ def process_file(jpeg_file: Union[UploadedFile, Image.Image]) -> dict[str, any]:
         new_value = st.sidebar.text_input(f"{key}: ", value)
         edited_json[key] = new_value
 
-    if st.sidebar.button("保存"):
+    if st.sidebar.button("保存", key="保存ボタン"):
         st.sidebar.write("以下の内容で保存されました🎉")
         st.sidebar.json(edited_json)
         insert_contract_endpoint(
