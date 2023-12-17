@@ -12,7 +12,7 @@ from frontend.component.organisms.file_processor import process_file
 from frontend.component.utils.navigation import next_file, previous_file
 
 
-def index_page() -> None:
+def render() -> None:
     st.title("OCR自動化プロダクト")
     st.markdown("### 読み込む契約書をアップロード（複数ファイル可）")
     upload_files = st.file_uploader(
