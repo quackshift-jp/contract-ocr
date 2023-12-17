@@ -9,9 +9,9 @@ def main():
     )
 
     if page == "アップロード画面":
-        index.index_page()
+        index.render()
     if page == "ダッシュボード":
-        dashboard.dashboard_page()
+        dashboard.render()
 
 
 if __name__ == "__main__":
