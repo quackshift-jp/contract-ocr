@@ -15,6 +15,7 @@ from backend.modules.extract_items import OpenaiItemExtractor
 
 from backend.router.get import router as get_router
 from backend.router.insert import router as insert_router
+from backend.router.update import router as update_router
 
 load_dotenv(verbose=True)
 
@@ -27,6 +28,7 @@ OPENAI_CLIENT = OpenAI()
 app = FastAPI()
 app.include_router(get_router)
 app.include_router(insert_router)
+app.include_router(update_router)
 
 
 def detect(jpeg_file: Union[UploadedFile, Image.Image]) -> str:
