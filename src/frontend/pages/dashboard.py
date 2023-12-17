@@ -6,7 +6,7 @@ from frontend.component.api.request import (
 )
 
 
-def dashboard_page():
+def render():
     st.title("契約書管理ダッシュボード")
     contracts = read_contract_endpoint(endpoint="http://127.0.0.1:8000/get/contracts/")
     columns = list(contracts[0].keys())
@@ -35,4 +35,5 @@ def edit_row(contract_df: pd.DataFrame) -> dict[str, str]:
         修正が成功しました🎉
         """
         )
+        st.balloons()
         return response
