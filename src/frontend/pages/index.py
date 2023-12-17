@@ -14,14 +14,13 @@ from frontend.component.utils.navigation import next_file, previous_file
 
 def index_page() -> None:
     st.title("OCR自動化プロダクト")
-    st.sidebar.markdown("### 読み込む契約書をアップロード（複数ファイル可）")
-    upload_files = st.sidebar.file_uploader(
+    st.markdown("### 読み込む契約書をアップロード（複数ファイル可）")
+    upload_files = st.file_uploader(
         "Upload a PDF or jpeg file", type=["pdf", "jpg"], accept_multiple_files=True
     )
 
     # アップされたファイル情報を一枚ずつ表示するため、indexを状態として保持する
-    if "current_index" not in st.session_state:
-        st.session_state["current_index"] = 0
+    st.session_state["current_index"] = 0
 
     if upload_files:
         st.session_state["upload_files"] = upload_files
@@ -41,6 +40,3 @@ def index_page() -> None:
         with col2:
             if st.button("次へ"):
                 next_file()
-
-
-index_page()
