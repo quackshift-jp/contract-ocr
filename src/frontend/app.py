@@ -4,10 +4,10 @@ from pages import index, dashboard
 
 
 def main():
+    st.sidebar.markdown("### ページ選択")
     page = st.sidebar.selectbox(
         label="ページを選択してください", options=["トップページ", "アップロード画面", "ダッシュボード"]
     )
-
     if page == "アップロード画面":
         index.render()
     if page == "ダッシュボード":
