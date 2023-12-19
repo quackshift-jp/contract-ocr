@@ -12,5 +12,5 @@ router = APIRouter()
 async def get_contracts_endpoint(
     db: Session = Depends(db.get_db_session),
 ) -> list[Contract]:
-    result = get.get_contracts(db=db)
-    return result
+    contracts = get.get_contracts(db=db)
+    return contracts

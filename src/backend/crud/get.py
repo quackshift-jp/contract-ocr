@@ -9,4 +9,5 @@ def get_contracts(db: Session) -> list[Contract]:
     result = db.execute(sql).all()
     if result is None:
         raise HTTPException(status_code=404, detail="Table not found")
-    return result
+    contracts = [Contract(**row._asdict()) for row in result]
+    return contracts
