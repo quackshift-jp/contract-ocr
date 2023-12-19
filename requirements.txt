@@ -8,3 +8,10 @@ python-dotenv==1.0.0
 fastapi==0.105.0
 psycopg2==2.9.9
 uvicorn==0.24.0.post1
+""" TODO: layout-parseを使う際にインストールする
+label-studio==1.10.0.post0
+layoutparser==0.3.4
+torch==2.1.2
+torchvision==0.16.2
+detectron2 @ git+https://github.com/facebookresearch/detectron2.git@a0e22dbfa791e6235e4f196d5ce25e754d02be31
+"""
