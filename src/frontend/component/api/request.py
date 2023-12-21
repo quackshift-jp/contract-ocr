@@ -8,6 +8,18 @@ def read_contract_endpoint(endpoint: str) -> list[dict[str, any]]:
         return json_data
 
 
+def read_specific_contract_endpoint(
+    endpoint: str, column_name: str, column_value: str
+) -> dict[str, any]:
+    response = requests.get(
+        f"{endpoint}?column_name={column_name}&column_value={column_value}"
+    )
+    if response.status_code == 200:
+        json_data = response.json()
+        print(type(json_data))
+        return json_data
+
+
 def insert_contract_endpoint(endpoint: str, contractor: str) -> list[dict[str, any]]:
     response = requests.post(f"{endpoint}?contractor={contractor}")
     if response.status_code == 200:
