@@ -24,7 +24,4 @@ async def get_specific_contract_endpoint(
     db: Session = Depends(db.get_db_session),
 ) -> Contract:
     contracts = get.get_specific_contract(column_name, column_value, db=db)
-    print("タイプの出力")
-    print(type(contracts))
-    print(contracts)
     return contracts

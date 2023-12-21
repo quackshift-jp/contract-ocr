@@ -25,5 +25,5 @@ def get_specific_contract(
     )
     result = db.execute(sql).first()
     if result is None:
-        return None  # Return None if no data is found
+        return None
     return Contract(**result._asdict())
