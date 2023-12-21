@@ -16,7 +16,6 @@ def read_specific_contract_endpoint(
     )
     if response.status_code == 200:
         json_data = response.json()
-        print(type(json_data))
         return json_data
 
 
