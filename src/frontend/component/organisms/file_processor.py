@@ -6,6 +6,14 @@ from streamlit.runtime.uploaded_file_manager import UploadedFile
 
 from backend.main import detect, extract_items
 from frontend.component.api.request import insert_contract_endpoint
+from frontend.component.api.request import read_specific_contract_endpoint
+
+
+def is_already_exist(column_name: str, value: str) -> bool:
+    response = read_specific_contract_endpoint(
+        "http://127.0.0.1:8000/get/contract", column_name, value
+    )
+    return response is None
 
 
 def process_file(jpeg_file: Union[UploadedFile, Image.Image]) -> dict[str, any]:
@@ -20,8 +28,11 @@ def process_file(jpeg_file: Union[UploadedFile, Image.Image]) -> dict[str, any]:
         edited_json[key] = new_value
 
     if st.sidebar.button("保存", key="保存ボタン"):
-        st.sidebar.write("以下の内容で保存されました🎉")
-        st.sidebar.json(edited_json)
-        insert_contract_endpoint(
-            "http://127.0.0.1:8000/insert/contracts", edited_json["物件名"]
-        )
+        if not is_already_exist("contractor", edited_json["物件名"]):
+            st.sidebar.error("エラー: この物件名は既に存在します。")
+        else:
+            st.sidebar.write("以下の内容で保存されました🎉")
+            st.sidebar.json(edited_json)
+            insert_contract_endpoint(
+                "http://127.0.0.1:8000/insert/contracts", edited_json["物件名"]
+            )
