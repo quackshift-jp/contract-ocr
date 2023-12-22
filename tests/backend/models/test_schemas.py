@@ -9,7 +9,7 @@ def test_employee():
         "created_at": "2099-01-01 01:00:00",
     }
 
-    actual = Employee(**employee_data).model_dump()
+    actual = Employee(**employee_data)
     expected = {
         "employee_id": 11111,
         "name": "山田太郎",
@@ -26,7 +26,7 @@ def test_contract():
         "updated_at": "2099-01-01 01:00:00",
     }
 
-    actual = Contract(**contract_data).model_dump()
+    actual = Contract(**contract_data)
     expected = {
         "contract_id": 11111,
         "contractor": "サンプル株式会社",
@@ -45,7 +45,7 @@ def test_employee_event():
         "event_type": "CREATED",
     }
 
-    actual = EmployeeEvent(**event_data).model_dump()
+    actual = EmployeeEvent(**event_data)
     expected = {
         "contract_id": 11111,
         "employee_id": 22222,
