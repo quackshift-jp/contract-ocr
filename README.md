@@ -6,7 +6,7 @@ OCRニーズは高く、項目チェックなどのオペレーション業務�
 ### サービス
 契約書OCRサービス📷
 
-<img src="https://github.com/quackshift-jp/contract-ocr/assets/110513314/e3ab3b63-9add-487f-8c53-9210bdda5f55" width="100">
+<img src="https://github.com/quackshift-jp/contract-ocr/assets/110513314/e3ab3b63-9add-487f-8c53-9210bdda5f55" width="500">
 
 
 ### 主要機能 ✅
