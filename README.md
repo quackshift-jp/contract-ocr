@@ -62,6 +62,8 @@ $ path/to/src && streamlit run frontend/app.py
 | データベース | PostgreSQL |
 | ストレージ | Amazon S3 |
 | デザイン | Figma |
+| アーキテクチャ | クリーンアーキテクチャ・ドメイン駆動設計 |
+| デザインパターン | Atomic Design |
 
 
 # 今後の展望
